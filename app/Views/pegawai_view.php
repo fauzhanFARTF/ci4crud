@@ -117,6 +117,12 @@
             $.ajax({
                 url: "<?php echo site_url("pegawai/simpan")?>",
                 type: "POST",
+                data: {
+                    nama: $nama,
+                    nama: $email,
+                    email: $bidang,
+                    alamat: $alamat
+                },
                 success: function(hasil){
                     var $obj = $.parseJSON(hasil);
                     if($obj.sukses == false){
