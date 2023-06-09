@@ -8,7 +8,7 @@ class Pegawai extends BaseController
         $this->model = new \App\Models\ModelPegawai();
     }
     public function simpan(){
-        $hasil['sukses'] = false;
+        $hasil['sukses'] = "Berhasil Memasukan Data";
         $hasil['error'] = "Gagal Memasukan Data";
         return json_encode($hasil);
     }
