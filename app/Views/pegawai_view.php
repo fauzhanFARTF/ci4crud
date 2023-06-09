@@ -20,7 +20,12 @@
                 Data Pegawai
             </div>
             <div class="card-body">
-
+                <form action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name ="katakunci" placeholder="Masukan Kata Kunci" aria-label="Masukan Kata Kunci" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cari</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
