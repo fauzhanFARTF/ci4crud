@@ -8,8 +8,8 @@ class Pegawai extends BaseController
         $this->model = new \App\Models\ModelPegawai();
     }
     public function simpan(){
-        $hasil['sukses'] = false;
-        $hasil['error'] = "Ada error terjadi";
+        $hasil['sukses'] = true;
+        $hasil['error'] = "false";
         return json_encode($hasil);
     }
     public function index()

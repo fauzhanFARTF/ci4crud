@@ -116,7 +116,12 @@
                 url: "<?php echo site_url("pegawai/simpan")?>",
                 type: "POST",
                 success: function(hasil){
-                    alert(hasil)
+                    var $obj = $.parseJSON(hasil);
+                    if($obj.sukses == false){
+                        alert("saya gagal pesan" + $obj.error)
+                    } else {
+                        alert("saya sukses");
+                    }
                 }
             })
         })
