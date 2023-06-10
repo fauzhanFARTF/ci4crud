@@ -43,6 +43,15 @@ class Pegawai extends BaseController
             $bidang = $this->request->getPost('bidang');
             $alamat = $this->request->getPost('alamat');
 
+            $data = [
+                'nama' => $nama,
+                'email' => $email,
+                'bidang' => $bidang,
+                'alamat' => $alamat
+            ];
+
+            $this->model->save($data);
+
             $hasil['sukses'] = "Berhasil Memasukan Data";
             $hasil['error'] = true;
         } else {

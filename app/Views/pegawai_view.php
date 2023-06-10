@@ -55,12 +55,13 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="inputBidang" class="col-sm-2 col-form-label">Email</label>
+                                    <label for="inputBidang" class="col-sm-2 col-form-label">Bidang</label>
                                     <div class="col-sm-10">
                                         <select id="inputBidang" class="form-select">
-                                            <option value="finance">Finance</option>
-                                            <option value="marketing">Marketing</option>
-                                            <option value="hr">HR</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="HR">HR</option>
+                                            <option value="GIS Analyst">GIS Analyst</option>
                                         </select>
                                     </div>
                                 </div>
