@@ -63,7 +63,14 @@ class Pegawai extends BaseController
     public function index()
     {
         $jumlahBaris = 5;
-        $data['dataPegawai'] = $this->model->orderBy('id','desc')->paginate($jumlahBaris);
+        $katakunci = $this->request->getGet('katakunci');
+        if($katakunci){
+            $pencarian = $this->model->cari($katakunci);
+        } else {
+            $pencarian = $this->model;
+        }
+        $data['katakunci'] = $katakunci;
+        $data['dataPegawai'] = $pencarian->orderBy('id','desc')->paginate($jumlahBaris);
         $data['pager'] = $this->model->pager;
         $data['jumlahBaris'] = $jumlahBaris ;
         $data['nomor'] = $this->request->getVar('page') ? $this->request->getVar('page') : 1 ;
