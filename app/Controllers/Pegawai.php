@@ -62,6 +62,7 @@ class Pegawai extends BaseController
     }
     public function index()
     {
-        return view('pegawai_view');
+        $data['dataPegawai'] = $this->model->orderBy('id','desc')->findAll();
+        return view('pegawai_view', $data);
     }
 }

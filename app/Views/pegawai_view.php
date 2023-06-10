@@ -91,17 +91,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                            $no = 1;
+                            foreach($dataPegawai as $k => $v){
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>Nama</td>
-                            <td>Email</td>
-                            <td>Bidang</td>
-                            <td>Alamat</td>
+                            <td><?= $no ?></td>
+                            <td><?= $v['nama'] ?></td>
+                            <td><?= $v['email'] ?></td>
+                            <td><?= $v['bidang'] ?></td>
+                            <td><?= $v['alamat']; ?></td>
                             <td>
                                 <button type="button" class="btn btn-warning btn-sm">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <?php 
+                            $no++;
+                            } 
+                        ?>
                     </tbody>
                 </table>
             </div>
