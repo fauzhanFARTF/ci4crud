@@ -119,8 +119,8 @@
                 type: "POST",
                 data: {
                     nama: $nama,
-                    nama: $email,
-                    email: $bidang,
+                    email: $email,
+                    bidang: $bidang,
                     alamat: $alamat
                 },
                 success: function(hasil){
