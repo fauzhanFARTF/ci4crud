@@ -7,6 +7,10 @@ class Pegawai extends BaseController
     function __construct(){
         $this->model = new \App\Models\ModelPegawai();
     }
+    public function hapus($id){
+        $this->model->delete($id);
+        return redirect()->to('pegawai');
+    }
     public function edit($id){
         return json_encode($this->model->find($id));
     }
