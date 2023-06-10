@@ -7,6 +7,9 @@ class Pegawai extends BaseController
     function __construct(){
         $this->model = new \App\Models\ModelPegawai();
     }
+    public function edit($id){
+        return json_encode($this->model->find($id));
+    }
     public function simpan(){
         $validasi = \Config\Services::validation();
         $aturan = [
@@ -38,12 +41,14 @@ class Pegawai extends BaseController
         ];
         $validasi ->setRules($aturan);
         if($validasi -> withRequest($this->request)->run()){
+            $id = $this->request->getPost('id');
             $nama = $this->request->getPost('nama');
             $email = $this->request->getPost('email');
             $bidang = $this->request->getPost('bidang');
             $alamat = $this->request->getPost('alamat');
 
             $data = [
+                'id' => $id,
                 'nama' => $nama,
                 'email' => $email,
                 'bidang' => $bidang,

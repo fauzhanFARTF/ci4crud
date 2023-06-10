@@ -43,6 +43,11 @@
                                 <div class="alert alert-danger error" role="alert" style="display: none"></div>
                                 <div class="alert alert-primary sukses" role="alert" style="display: none"></div>
                                 <div class="mb-3 row">
+                                    <div class="col-sm-10">
+                                        <input type="hidden" class="form-control" id="inputId">
+                                    </div>
+                                </div>                               
+                                <div class="mb-3 row">
                                     <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="inputNama">
@@ -102,7 +107,7 @@
                             <td><?= $v['bidang'] ?></td>
                             <td><?= $v['alamat']; ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning btn-sm">Edit</button>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="edit(<?php echo $v['id']?>)">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
@@ -123,7 +128,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
+        function edit ($id) {
+            $.ajax({
+                url: "<?php echo site_url("pegawai/edit") ?>/" + $id,
+                type: "get",
+                success: function(hasil){
+                    var $obj = $.parseJSON(hasil)
+                    if ($obj.id != '') {
+                        $('#inputId').val($obj.id);
+                        $('#inputNama').val($obj.nama);
+                        $('#inputEmail').val($obj.email);
+                        $('#inputBidang').val($obj.bidang);
+                        $('#inputAlamat').val($obj.alamat);
+                    }
+                }
+            })
+        }
         function bersihkan(){
+            $('#inputId').val('');
             $('#inputNama').val('');
             $('#inputEmail').val('');
             $('#inputAlamat').val('');
@@ -137,6 +159,7 @@
             bersihkan();
         })
         $('#tombolSimpan').on('click',function(){
+            var $id = $('#inputId').val();
             var $nama = $('#inputNama').val();
             var $email = $('#inputEmail').val();
             var $bidang = $('#inputBidang').val();
@@ -145,6 +168,7 @@
                 url: "<?php echo site_url("pegawai/simpan")?>",
                 type: "POST",
                 data: {
+                    id : $id,
                     nama: $nama,
                     email: $email,
                     bidang: $bidang,
