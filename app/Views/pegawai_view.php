@@ -92,11 +92,11 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $no = 1;
+                            $i = 1 + ($jumlahBaris * ($nomor - 1));
                             foreach($dataPegawai as $k => $v){
                         ?>
                         <tr>
-                            <td><?= $no ?></td>
+                            <td><?= $i++ ?></td>
                             <td><?= $v['nama'] ?></td>
                             <td><?= $v['email'] ?></td>
                             <td><?= $v['bidang'] ?></td>
@@ -106,15 +106,16 @@
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
-                        <?php 
-                            $no++;
-                            } 
-                        ?>
+                        <?php }  ?>
                     </tbody>
                 </table>
                 <?php 
                     $linkPagination = $pager->links();
+                    $linkPagination = str_replace('<li class="active>', '<li class="page-item active">', $linkPagination);
+                    $linkPagination = str_replace('<li>', '<li class="page-item">', $linkPagination);
+                    $linkPagination = str_replace("<a", "<a class='page-link'", $linkPagination);
                     echo $linkPagination;
+
                 ?>
             </div>
         </div>

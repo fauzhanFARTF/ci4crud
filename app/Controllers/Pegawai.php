@@ -62,9 +62,11 @@ class Pegawai extends BaseController
     }
     public function index()
     {
-        $jumlahBaris = 4;
+        $jumlahBaris = 5;
         $data['dataPegawai'] = $this->model->orderBy('id','desc')->paginate($jumlahBaris);
         $data['pager'] = $this->model->pager;
+        $data['jumlahBaris'] = $jumlahBaris ;
+        $data['nomor'] = $this->request->getVar('page') ? $this->request->getVar('page') : 1 ;
         return view('pegawai_view', $data);
     }
 }
