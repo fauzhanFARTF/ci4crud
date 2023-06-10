@@ -112,6 +112,10 @@
                         ?>
                     </tbody>
                 </table>
+                <?php 
+                    $linkPagination = $pager->links();
+                    echo $linkPagination;
+                ?>
             </div>
         </div>
     </div>
